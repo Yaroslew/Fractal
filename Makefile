@@ -6,6 +6,7 @@ FLAGS = #-Wall -Wextra -Werror
 SRC =     ./src/main.c\
 			./src/mald.c\
 			./src/mess_err.c\
+			./src/img_operation.c\
 
 OBJ = $(SRC:.c=.o)
 

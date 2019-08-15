@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:53 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/06 18:51:41 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/15 19:34:07 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static t_base	*init_base(void)
 
 	base->factor_re = (base->max_re - base->min_re) / (base->width - 1);
 	base->factor_im = (base->max_im - base->min_im) / (base->height - 1);
+	base->scale = 1.0;
 
 	base->max_iteration = 50;
 
@@ -53,19 +54,35 @@ static int de_key(int key, t_base *base)
 	return (0);
 }
 
+static	int	mouse_hook(int button, int x, int y, t_base *base)
+{
+//	if (button == 4)
+//		base->scale += -0.01;
+//	if (button == 5)
+//		base->scale += 0.01;
+
+
+	ft_printf("%lf %lf\n", base->factor_im, base->factor_re);
+	free_image(base);
+	maldebrot(base);
+	mlx_put_image_to_window(base->mlx_ptr, base->win_ptr, base->img_ptr, 0, 0);
+	return (0);
+}
+
 int	main (int ar, char **av)
 {
 	t_base *base;
 
-	if (ar < 2)
-		mess_err(1);
-	else
-		check_ar(av);
+//	if (ar < 2)
+//		mess_err(1);
+//	else
+//		check_ar(av);
 	base = init_base();
 	init_mlx(base);
 	maldebrot(base);
 	mlx_put_image_to_window(base->mlx_ptr, base->win_ptr, base->img_ptr, 0, 0);
 
+	mlx_mouse_hook(base->win_ptr, mouse_hook, base);
 	mlx_hook(base->win_ptr, 2, 0, de_key, base);
 	mlx_loop(base->mlx_ptr);
 

@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:38:22 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/10 13:05:14 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/15 17:34:41 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	maldebrot(t_base *base)
 	x = 0;
 	while (y < base->height)
 	{
-		c_im = base->max_im - y * base->factor_im;
+		c_im = base->max_im - y * base->factor_im * base->scale;
 		x = 0;
 		while (x < base->width)
 		{
-			c_re = base->min_re + x * base->factor_re;
+			c_re = base->min_re + x * base->factor_re * base->scale;
 			z = init_com(c_re, c_im);
 			base->iteration = 0;
 			while (pow(z->re, 2.0) + pow(z->im, 2.0) <= 4 && base->iteration < base->max_iteration)

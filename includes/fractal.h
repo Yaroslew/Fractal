@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:57 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/06 19:34:46 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/15 17:34:41 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_base
 	int		*img_data;
 	int		width;
 	int		height;
+	double	scale;
 
 	double	min_re;
 	double	max_re;
@@ -39,6 +40,8 @@ typedef struct s_base
 
 	int		max_iteration;
 	int		iteration;
+
+
 }			t_base;
 
 typedef struct s_complex
@@ -52,5 +55,6 @@ t_complex		*init_com(double re, double im);
 void			maldebrot(t_base *base);
 int				get_color(int iteration, int max_itaretion);
 void			check_av(char **av);
+void			free_image(t_base *base);
 
 #endif
