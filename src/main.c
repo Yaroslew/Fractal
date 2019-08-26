@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:53 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/26 21:46:02 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/26 21:46:20 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int main (int ar, char **av)
 		mandelbrot(base);
 	if (base->type_fract == 2)
 		julia(base);
+	if (base->type_fract == 3)
+		mandelbar(base);
 
 	draw_img(base);
 

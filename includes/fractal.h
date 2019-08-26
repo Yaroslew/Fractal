@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:57 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/26 21:45:52 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/26 21:46:58 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void			init_mlx(t_base *base);
 
 void			mandelbrot(t_base *base);
 void			julia(t_base *base);
+void			mandelbar(t_base *base);
 void			get_color(t_base *base);
 int				get_color_two(t_base *base);
 
