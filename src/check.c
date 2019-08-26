@@ -16,7 +16,7 @@ int		check(char *str)
 {
 	if (ft_strcmp("Mandelbrot", str) == 0)
 		return (1);
-	if (ft_strcmp("Julia", str))
+	if (ft_strcmp("Julia", str) == 0)
 		return (2);
 	mess_err(1);
 	return (0);

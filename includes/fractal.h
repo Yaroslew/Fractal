@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:57 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/26 19:16:31 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/26 21:45:52 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_fract
 	t_complex	*min;
 	t_complex	*c;
 	t_complex	*factor;
+	t_complex	*k;
 
 
 }				t_fract;
@@ -66,10 +67,11 @@ int				check(char *str);
 
 t_base 			*init_base(int a);
 t_complex		*init_com(double re, double im);
-void			init_mandelbrot(t_base *base);
+void			init_fract(t_base *base);
 void			init_mlx(t_base *base);
 
 void			mandelbrot(t_base *base);
+void			julia(t_base *base);
 void			get_color(t_base *base);
 int				get_color_two(t_base *base);
 

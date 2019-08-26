@@ -9,6 +9,7 @@ SRC =     ./src/main.c\
 			./src/init.c\
 			./src/check.c\
 			./src/img_operation.c\
+			./src/julia.c\
 
 OBJ = $(SRC:.c=.o)
 

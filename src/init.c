@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 16:44:48 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/26 19:17:47 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/26 21:45:39 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_base *init_base(int a)
 	return (base);
 }
 
-void	init_mandelbrot(t_base *base)
+void	init_fract(t_base *base)
 {
 	if (!(base->fract = malloc(sizeof(t_fract) * 1)))
 		mess_err(0);
@@ -41,6 +41,8 @@ void	init_mandelbrot(t_base *base)
 	base->fract->x = 0;
 	base->fract->y = 0;
 	base->fract->c = init_com(0, 0);
+	base->fract->k = init_com(-0.4, 0.6);
+
 }
 
 t_complex	*init_com(double re, double im)
