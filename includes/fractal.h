@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:57 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/15 17:34:41 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/26 19:16:31 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,42 +19,62 @@
 #include <math.h>
 # include "mlx.h"
 
-typedef struct s_base
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-
-	int		*img_data;
-	int		width;
-	int		height;
-	double	scale;
-
-	double	min_re;
-	double	max_re;
-	double	min_im;
-	double	max_im;
-
-	double	factor_re;
-	double	factor_im;
-
-	int		max_iteration;
-	int		iteration;
-
-
-}			t_base;
-
 typedef struct s_complex
 {
-	double	im;
-	double	re;
+	double		re;
+	double 		im;
 }				t_complex;
 
+typedef struct s_fract
+{
+	int			iteration;
+	int			max_iteration;
+	int			x;
+	int			y;
+
+	t_complex	*max;
+	t_complex	*min;
+	t_complex	*c;
+	t_complex	*factor;
+
+
+}				t_fract;
+
+typedef struct s_mlx
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*img_ptr;
+	int			*data_img;
+
+}				t_mlx;
+
+typedef struct	s_base
+{
+	int			width;
+	int			height;
+	int			type_fract;
+	t_fract		*fract;
+	t_mlx		*mlx;
+
+
+
+}				t_base;
+
 void			mess_err(int a);
+int				check(char *str);
+
+t_base 			*init_base(int a);
 t_complex		*init_com(double re, double im);
-void			maldebrot(t_base *base);
-int				get_color(int iteration, int max_itaretion);
-void			check_av(char **av);
-void			free_image(t_base *base);
+void			init_mandelbrot(t_base *base);
+void			init_mlx(t_base *base);
+
+void			mandelbrot(t_base *base);
+void			get_color(t_base *base);
+int				get_color_two(t_base *base);
+
+void			draw_img(t_base *base);
+void			free_img(t_base *base);
+
 
 #endif

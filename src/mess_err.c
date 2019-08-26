@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:16:30 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/15 17:34:41 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/26 16:03:51 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,8 @@ void	mess_err(int a)
 	if (a == 1)
 		ft_printf("Не указан или неправильно написан вызваемый фрактал.\n"
 			"./fractal Mandelbrot - множество Мальдеброта\n"
-  			"./fractal Jul - множество Жулиа\n"
-			"./fractal Ser - треугольник Серпинского\n");
+  			"./fractal Julia - множество Жулиа\n");
 	exit(0);
 }
 
-void	check_av(char **av)
-{
-	int 	sum;
 
-	sum = 0;
-	if (ft_strcmp(av[1], "Mandelbrot"))
-		sum = 1;
-}

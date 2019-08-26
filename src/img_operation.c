@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   img_operation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 17:06:53 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/26 19:16:48 by pcorlys-         ###   ########.fr       */
+/*   Created: 2019/08/26 19:07:43 by pcorlys-          #+#    #+#             */
+/*   Updated: 2019/08/26 19:15:15 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractal.h"
 
-static int de_key(int key, t_base *base)
+void	draw_img(t_base *base)
 {
-	if (key == 53)
-	{
-		exit(0);
-		base = NULL;
-	}
-
-	return (0);
+	mlx_put_image_to_window(base->mlx->mlx_ptr, base->mlx->win_ptr,
+	base->mlx->img_ptr, 0, 0);
+	free_img(base);
 }
 
-int main (int ar, char **av)
+void	free_img(t_base *base)
 {
-	t_base *base;
-	if (ar != 2)
-		mess_err(1);
-	base = init_base(check(av[1]));
-	init_mlx(base);
-	if (base->type_fract == 1)
+	int q;
+
+	q = 0;
+	while (q < base->width * base->height)
 	{
-		init_mandelbrot(base);
-		mandelbrot(base);
-		draw_img(base);
+		base->mlx->data_img[q] = 0;
+		q++;
 	}
 
-	mlx_hook(base->mlx->win_ptr, 2, 0, de_key, base);
-	mlx_loop(base->mlx->mlx_ptr);
 }

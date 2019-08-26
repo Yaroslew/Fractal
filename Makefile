@@ -1,11 +1,13 @@
 NAME = fractal
 LIB = libft/libftprintf.a
 MLX = libft/libmlx.a
-INCL = fdfHeader.h
-FLAGS = #-Wall -Wextra -Werror
+INCL = fractal.h
+FLAGS = -Wall -Wextra -Werror
 SRC =     ./src/main.c\
-			./src/mald.c\
+			./src/mandelbrot.c\
 			./src/mess_err.c\
+			./src/init.c\
+			./src/check.c\
 			./src/img_operation.c\
 
 OBJ = $(SRC:.c=.o)
