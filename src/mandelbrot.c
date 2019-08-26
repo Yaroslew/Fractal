@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 18:09:14 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/26 18:52:07 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/26 21:16:27 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	mandelbrot(t_base *base)
 	t_complex	*z;
 
 	fract = base->fract;
-	while (fract->y < 0)
+	while (fract->y < base->height)
 	{
 		fract->c->im = fract->max->im - fract->y * fract->factor->im;
 		fract->x = 0;
