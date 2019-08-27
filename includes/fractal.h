@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:57 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/26 21:46:58 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/27 17:43:30 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ typedef struct s_fract
 	int			max_iteration;
 	int			x;
 	int			y;
+	double		zoom_factor;
+	double		scale;
 
 	t_complex	*max;
 	t_complex	*min;
 	t_complex	*c;
 	t_complex	*factor;
 	t_complex	*k;
+	t_complex	*mouse;
 
 
 }				t_fract;
@@ -59,7 +62,6 @@ typedef struct	s_base
 	t_mlx		*mlx;
 
 
-
 }				t_base;
 
 void			mess_err(int a);
@@ -78,6 +80,10 @@ int				get_color_two(t_base *base);
 
 void			draw_img(t_base *base);
 void			free_img(t_base *base);
+
+void			set_mouse(t_base *base, int x, int y);
+double 			interpolate(double start, double end, double interpolation);
+void			zoom(t_base *base);
 
 
 #endif

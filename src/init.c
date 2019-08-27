@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 16:44:48 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/26 21:45:39 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/27 18:38:58 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void	init_fract(t_base *base)
 	base->fract->y = 0;
 	base->fract->c = init_com(0, 0);
 	base->fract->k = init_com(-0.4, 0.6);
+	base->fract->mouse = init_com(0,0);
+	base->fract->zoom_factor = 1.0;
+	base->fract->scale = 0.1;
 
 }
 

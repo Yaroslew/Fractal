@@ -11,6 +11,7 @@ SRC =     ./src/main.c\
 			./src/img_operation.c\
 			./src/julia.c\
 			./src/mandelbar.c\
+			./src/action.c\
 
 OBJ = $(SRC:.c=.o)
 

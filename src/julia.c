@@ -38,4 +38,5 @@ void	julia(t_base *base)
 		}
 		fract->y++;
 	}
+	fract->y = 0;
 }
