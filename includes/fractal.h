@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:57 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/27 17:43:30 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/08/29 17:55:41 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <math.h>
 # include "mlx.h"
+# include <pthread.h>
 
 typedef struct s_complex
 {

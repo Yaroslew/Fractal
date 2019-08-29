@@ -18,13 +18,13 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
-	@gcc $(SRC) $(LIB) $(MLX) -lmlx -framework OpenGL -framework AppKit -o $@
+	@gcc $(SRC) $(LIB) $(MLX) -lmlx -lpthread -framework OpenGL -framework AppKit -o $@
 
 $(LIB):
 	@make -C libft
 
 $(OBJ): %.o: %.c
-	gcc $(FLAGS) -c $< -I $(INCL) -o $@
+	gcc $(FLAGS) -c $< -I $(INCL) -o$@
 
 clean:
 	@make clean -C libft
