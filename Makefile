@@ -2,7 +2,7 @@ NAME = fractal
 LIB = libft/libftprintf.a
 MLX = libft/libmlx.a
 INCL = fractal.h
-FLAGS = -Wall -Wextra -Werror
+#FLAGS = -Wall -Wextra -Werror
 SRC =     ./src/main.c\
 			./src/mandelbrot.c\
 			./src/mess_err.c\
@@ -18,7 +18,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
-	@gcc $(SRC) $(LIB) $(MLX) -lmlx -lpthread -framework OpenGL -framework AppKit -o $@
+	@gcc $(SRC) $(LIB) $(MLX) -lmlx -framework OpenGL -framework OpenCL -framework AppKit -o $@
 
 $(LIB):
 	@make -C libft
