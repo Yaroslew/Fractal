@@ -70,5 +70,4 @@ char				*clean_fract_one(char *ftitoa)
 	ftitoa--;
 	free(ftitoa);
 	return (res);
-
 }

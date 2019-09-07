@@ -29,5 +29,4 @@ void	free_img(t_base *base)
 		base->mlx->data_img[q] = 0;
 		q++;
 	}
-
 }

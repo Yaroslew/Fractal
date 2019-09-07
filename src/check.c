@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/fractal.h"
+#include "../includes/fractal.h"
 
 int		check(char *str)
 {
@@ -23,4 +23,3 @@ int		check(char *str)
 	mess_err(1);
 	return (0);
 }
-

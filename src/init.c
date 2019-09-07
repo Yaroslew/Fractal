@@ -6,15 +6,15 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 16:44:48 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/09/07 19:10:47 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/07 19:57:27 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/fractal.h"
+#include "../includes/fractal.h"
 
-t_base *init_base(int a)
+t_base			*init_base(int a)
 {
-	t_base *base;
+	t_base	*base;
 
 	if (!(base = malloc(sizeof(t_base) * 1)))
 		mess_err(0);
@@ -27,7 +27,7 @@ t_base *init_base(int a)
 	return (base);
 }
 
-void	init_fract(t_base *base)
+void			init_fract(t_base *base)
 {
 	if (!(base->fract = malloc(sizeof(t_fract) * 1)))
 		mess_err(0);
@@ -35,22 +35,22 @@ void	init_fract(t_base *base)
 	base->fract->max = init_com(2.0, base->fract->min->im + (2.0 -
 	base->fract->min->re) * base->height / base->width);
 	base->fract->factor = init_com((base->fract->max->re - base->fract->min->re)
-	/ (base->width - 1), (base->fract->max->im - base->fract->min->im) / (base->height - 1));
+	/ (base->width - 1), (base->fract->max->im - base->fract->min->im) /
+	(base->height - 1));
 	base->fract->iteration = 0;
-	base->fract->max_iteration = 10;
+	base->fract->max_iteration = 50;
 	base->fract->x = 0;
 	base->fract->y = 0;
 	base->fract->c = init_com(0, 0);
 	base->fract->k = init_com(-0.4, 0.6);
-	base->fract->mouse = init_com(0,0);
+	base->fract->mouse = init_com(0, 0);
 	base->fract->zoom_factor = 1.0;
 	base->fract->scale = 0.01;
-
 }
 
-t_complex	*init_com(double re, double im)
+t_complex		*init_com(double re, double im)
 {
-	t_complex *complex;
+	t_complex	*complex;
 
 	if (!(complex = malloc(sizeof(t_complex) * 1)))
 		mess_err(0);
@@ -59,14 +59,17 @@ t_complex	*init_com(double re, double im)
 	return (complex);
 }
 
-void	init_mlx(t_base *base)
+void			init_mlx(t_base *base)
 {
-	int pix;
-	int end;
-	int line;
+	int			pix;
+	int			end;
+	int			line;
 
 	base->mlx->mlx_ptr = mlx_init();
-	base->mlx->win_ptr = mlx_new_window(base->mlx->mlx_ptr, base->width, base->height, "Fract'ol");
-	base->mlx->img_ptr = mlx_new_image(base->mlx->mlx_ptr, base->width, base->height);
-	base->mlx->data_img = (int *)mlx_get_data_addr(base->mlx->img_ptr, &pix, &line, &end);
+	base->mlx->win_ptr = mlx_new_window(base->mlx->mlx_ptr,
+			base->width, base->height, "Fract'ol");
+	base->mlx->img_ptr = mlx_new_image(base->mlx->mlx_ptr,
+			base->width, base->height);
+	base->mlx->data_img = (int *)mlx_get_data_addr(base->mlx->img_ptr,
+			&pix, &line, &end);
 }
