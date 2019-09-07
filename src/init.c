@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 16:44:48 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/27 18:38:58 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/07 19:10:47 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	init_fract(t_base *base)
 	base->fract->factor = init_com((base->fract->max->re - base->fract->min->re)
 	/ (base->width - 1), (base->fract->max->im - base->fract->min->im) / (base->height - 1));
 	base->fract->iteration = 0;
-	base->fract->max_iteration = 50;
+	base->fract->max_iteration = 10;
 	base->fract->x = 0;
 	base->fract->y = 0;
 	base->fract->c = init_com(0, 0);
 	base->fract->k = init_com(-0.4, 0.6);
 	base->fract->mouse = init_com(0,0);
 	base->fract->zoom_factor = 1.0;
-	base->fract->scale = 0.1;
+	base->fract->scale = 0.01;
 
 }
 
@@ -65,10 +65,8 @@ void	init_mlx(t_base *base)
 	int end;
 	int line;
 
-	if (!(base->mlx = malloc(sizeof(t_mlx) * 1)))
-		mess_err(0);
 	base->mlx->mlx_ptr = mlx_init();
-	base->mlx->win_ptr = mlx_new_window(base->mlx->mlx_ptr, base->width, base->height, "Fractal");
+	base->mlx->win_ptr = mlx_new_window(base->mlx->mlx_ptr, base->width, base->height, "Fract'ol");
 	base->mlx->img_ptr = mlx_new_image(base->mlx->mlx_ptr, base->width, base->height);
 	base->mlx->data_img = (int *)mlx_get_data_addr(base->mlx->img_ptr, &pix, &line, &end);
 }

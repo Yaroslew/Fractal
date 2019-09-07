@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:57 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/09/02 17:29:49 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/07 16:44:20 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 #include "../libft/includes/get_next_line.h"
 #include <stdlib.h>
 #include <math.h>
-#include "mlx.h"
-#include <OpenCL/opencl.h>
+# include "mlx.h"
 
 typedef struct s_complex
 {
@@ -85,6 +84,7 @@ void			free_img(t_base *base);
 void			set_mouse(t_base *base, int x, int y);
 double 			interpolate(double start, double end, double interpolation);
 void			zoom(t_base *base);
+void 			julia_motion(int x, int y, t_base *base);
 
 
 #endif

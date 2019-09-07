@@ -1,4 +1,4 @@
-NAME = fractal
+NAME = fractol
 LIB = libft/libftprintf.a
 MLX = libft/libmlx.a
 INCL = fractal.h

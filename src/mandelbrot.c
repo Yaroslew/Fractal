@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 18:09:14 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/08/27 19:16:18 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/07 19:20:08 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	mandelbrot(t_base *base)
 	fract = base->fract;
 	while (fract->y < base->height)
 	{
-		fract->c->im = fract->max->im - fract->y * fract->factor->im * base->fract->zoom_factor;
+		fract->c->im = fract->max->im - fract->y * fract->factor->im;
 		fract->x = 0;
 		while (fract->x < base->width)
 		{
-			fract->c->re = fract->min->re + fract->x * fract->factor->re * base->fract->zoom_factor;
+			fract->c->re = fract->min->re + fract->x * fract->factor->re;
 			z = init_com(fract->c->re, fract->c->im);
 			fract->iteration = 0;
 			while (pow(z->re, 2.0) + pow(z->im, 2.0) <= 4 && fract->iteration < fract->max_iteration)
