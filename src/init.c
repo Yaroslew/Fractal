@@ -6,11 +6,19 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 16:44:48 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/09/07 19:57:27 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/08 11:30:21 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractal.h"
+
+static t_complex	*pre_init_fract(double re, double im, t_complex *complex)
+{
+	if (!(complex = malloc(sizeof(t_complex) * 1)))
+		mess_err(0);
+	init_com(re, im, complex);
+	return (complex);
+}
 
 t_base			*init_base(int a)
 {
@@ -31,32 +39,29 @@ void			init_fract(t_base *base)
 {
 	if (!(base->fract = malloc(sizeof(t_fract) * 1)))
 		mess_err(0);
-	base->fract->min = init_com(-2.0, -2.0);
-	base->fract->max = init_com(2.0, base->fract->min->im + (2.0 -
-	base->fract->min->re) * base->height / base->width);
-	base->fract->factor = init_com((base->fract->max->re - base->fract->min->re)
+	base->fract->min = pre_init_fract(-2.0, -2.0, base->fract->min);
+	base->fract->max = pre_init_fract(2.0, base->fract->min->im + (2.0 -
+	base->fract->min->re) * base->height / base->width, base->fract->max);
+	base->fract->factor = pre_init_fract((base->fract->max->re - base->fract->min->re)
 	/ (base->width - 1), (base->fract->max->im - base->fract->min->im) /
-	(base->height - 1));
+	(base->height - 1), base->fract->factor);
 	base->fract->iteration = 0;
 	base->fract->max_iteration = 50;
 	base->fract->x = 0;
 	base->fract->y = 0;
-	base->fract->c = init_com(0, 0);
-	base->fract->k = init_com(-0.4, 0.6);
-	base->fract->mouse = init_com(0, 0);
+	base->fract->z = pre_init_fract(0, 0, base->fract->z);
+	base->fract->c = pre_init_fract(0, 0, base->fract->c);
+	base->fract->k = pre_init_fract(-0.4, 0.6, base->fract->k);
+	base->fract->mouse = pre_init_fract(0, 0, base->fract->mouse);
 	base->fract->zoom_factor = 1.0;
 	base->fract->scale = 0.01;
 }
 
-t_complex		*init_com(double re, double im)
+void			init_com(double re, double im, t_complex *complex)
 {
-	t_complex	*complex;
-
-	if (!(complex = malloc(sizeof(t_complex) * 1)))
-		mess_err(0);
 	complex->im = im;
 	complex->re = re;
-	return (complex);
+	return ;
 }
 
 void			init_mlx(t_base *base)

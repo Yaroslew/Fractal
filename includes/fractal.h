@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:57 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/09/07 20:10:20 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/08 10:54:44 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_fract
 	t_complex	*c;
 	t_complex	*factor;
 	t_complex	*k;
+	t_complex	*z;
 	t_complex	*mouse;
 }				t_fract;
 
@@ -61,7 +62,7 @@ typedef struct	s_base
 void			mess_err(int a);
 int				check(char *str);
 t_base			*init_base(int a);
-t_complex		*init_com(double re, double im);
+void			init_com(double re, double im, t_complex *complex);
 void			init_fract(t_base *base);
 void			init_mlx(t_base *base);
 void			mandelbrot(t_base *base);

@@ -2,7 +2,7 @@ NAME = fractol
 LIB = libft/libftprintf.a
 MLX = libft/libmlx.a
 INCL = fractal.h
-#FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -O3
 SRC =     ./src/main.c\
 			./src/mandelbrot.c\
 			./src/mess_err.c\

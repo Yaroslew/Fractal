@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:53 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/09/07 19:50:59 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/08 11:17:15 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ static int	mouse_move(int x, int y, t_base *base)
 	return (0);
 }
 
+static void		hook_event(t_base *base)
+{
+	mlx_mouse_hook(base->mlx->win_ptr, mouse_hook, base);
+	if (base->type_fract == 2)
+		mlx_hook(base->mlx->win_ptr, 6, 0, mouse_move, base);
+	mlx_hook(base->mlx->win_ptr, 2, 0, de_key, base);
+	mlx_loop(base->mlx->mlx_ptr);
+}
+
 int			main(int ar, char **av)
 {
 	t_base	*base;
@@ -63,9 +72,6 @@ int			main(int ar, char **av)
 	if (base->type_fract == 3)
 		mandelbar(base);
 	draw_img(base);
-	mlx_mouse_hook(base->mlx->win_ptr, mouse_hook, base);
-	if (base->type_fract == 2)
-		mlx_hook(base->mlx->win_ptr, 6, 0, mouse_move, base);
-	mlx_hook(base->mlx->win_ptr, 2, 0, de_key, base);
-	mlx_loop(base->mlx->mlx_ptr);
+	hook_event(base);
+	return (0);
 }

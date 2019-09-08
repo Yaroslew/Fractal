@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 17:21:12 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/09/07 19:53:10 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/08 11:14:43 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void		zoom(t_base *base)
 			base->fract->max->re, interpolation);
 	base->fract->max->im = interpolate(base->fract->mouse->im,
 			base->fract->max->im, interpolation);
-	base->fract->factor = init_com((base->fract->max->re - base->fract->min->re)
+	init_com((base->fract->max->re - base->fract->min->re)
 	/ (base->width - 1), (base->fract->max->im - base->fract->min->im)
-	/ (base->height - 1));
+	/ (base->height - 1), base->fract->factor);
 }
 
 double		interpolate(double start, double end, double interpolation)
@@ -45,6 +45,6 @@ void		set_mouse(t_base *base, int x, int y)
 
 void		julia_motion(int x, int y, t_base *base)
 {
-	base->fract->k = init_com(4 * ((double)x / base->width - 0.5), 4 *
-	((double)(base->height - y) / base->height - 0.5));
+	init_com(4 * ((double)x / base->width - 0.5), 4 *
+	((double)(base->height - y) / base->height - 0.5), base->fract->k);
 }
