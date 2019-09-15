@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:53 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/09/08 11:17:15 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/15 12:15:43 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	mouse_move(int x, int y, t_base *base)
 	return (0);
 }
 
-static void		hook_event(t_base *base)
+static void	hook_event(t_base *base)
 {
 	mlx_mouse_hook(base->mlx->win_ptr, mouse_hook, base);
 	if (base->type_fract == 2)

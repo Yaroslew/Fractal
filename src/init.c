@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 16:44:48 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/09/08 11:30:21 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/15 12:18:37 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static t_complex	*pre_init_fract(double re, double im, t_complex *complex)
 	return (complex);
 }
 
-t_base			*init_base(int a)
+t_base				*init_base(int a)
 {
-	t_base	*base;
+	t_base			*base;
 
 	if (!(base = malloc(sizeof(t_base) * 1)))
 		mess_err(0);
@@ -35,14 +35,15 @@ t_base			*init_base(int a)
 	return (base);
 }
 
-void			init_fract(t_base *base)
+void				init_fract(t_base *base)
 {
 	if (!(base->fract = malloc(sizeof(t_fract) * 1)))
 		mess_err(0);
 	base->fract->min = pre_init_fract(-2.0, -2.0, base->fract->min);
 	base->fract->max = pre_init_fract(2.0, base->fract->min->im + (2.0 -
 	base->fract->min->re) * base->height / base->width, base->fract->max);
-	base->fract->factor = pre_init_fract((base->fract->max->re - base->fract->min->re)
+	base->fract->factor = pre_init_fract((base->fract->max->re -
+base->fract->min->re)
 	/ (base->width - 1), (base->fract->max->im - base->fract->min->im) /
 	(base->height - 1), base->fract->factor);
 	base->fract->iteration = 0;
@@ -55,20 +56,24 @@ void			init_fract(t_base *base)
 	base->fract->mouse = pre_init_fract(0, 0, base->fract->mouse);
 	base->fract->zoom_factor = 1.0;
 	base->fract->scale = 0.01;
+	base->fract->min_re = base->fract->min->re;
+	base->fract->max_re = base->fract->max->re;
+	base->fract->max_im = base->fract->max->im;
+	base->fract->min_im = base->fract->min->im;
 }
 
-void			init_com(double re, double im, t_complex *complex)
+void				init_com(double re, double im, t_complex *complex)
 {
 	complex->im = im;
 	complex->re = re;
 	return ;
 }
 
-void			init_mlx(t_base *base)
+void				init_mlx(t_base *base)
 {
-	int			pix;
-	int			end;
-	int			line;
+	int				pix;
+	int				end;
+	int				line;
 
 	base->mlx->mlx_ptr = mlx_init();
 	base->mlx->win_ptr = mlx_new_window(base->mlx->mlx_ptr,

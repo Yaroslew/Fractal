@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 17:21:12 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/09/08 11:14:43 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/15 12:17:08 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void		zoom(t_base *base)
 
 	interpolation = 1.0 / base->fract->zoom_factor;
 	base->fract->min->re = interpolate(base->fract->mouse->re,
-			base->fract->min->re, interpolation);
+base->fract->min_re, interpolation);
 	base->fract->min->im = interpolate(base->fract->mouse->im,
-			base->fract->min->im, interpolation);
+base->fract->min_im, interpolation);
 	base->fract->max->re = interpolate(base->fract->mouse->re,
-			base->fract->max->re, interpolation);
+base->fract->max_re, interpolation);
 	base->fract->max->im = interpolate(base->fract->mouse->im,
-			base->fract->max->im, interpolation);
-	init_com((base->fract->max->re - base->fract->min->re)
-	/ (base->width - 1), (base->fract->max->im - base->fract->min->im)
-	/ (base->height - 1), base->fract->factor);
+base->fract->max_im, interpolation);
+	init_com((base->fract->max->re - base->fract->min->re) /
+(base->width - 1), (base->fract->max->im - base->fract->min->im) /
+(base->height - 1), base->fract->factor);
 }
 
 double		interpolate(double start, double end, double interpolation)

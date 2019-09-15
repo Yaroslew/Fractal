@@ -6,7 +6,7 @@
 /*   By: pcorlys- <pcorlys-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:06:57 by pcorlys-          #+#    #+#             */
-/*   Updated: 2019/09/08 10:54:44 by pcorlys-         ###   ########.fr       */
+/*   Updated: 2019/09/15 12:16:01 by pcorlys-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ typedef struct	s_fract
 	t_complex	*k;
 	t_complex	*z;
 	t_complex	*mouse;
+	double		min_re;
+	double		max_re;
+	double		min_im;
+	double		max_im;
 }				t_fract;
 
 typedef struct	s_mlx
